@@ -51,11 +51,11 @@ function checkWord() {
     const checkResult = document.getElementById('checkResult');
 
     if (wordInput.toUpperCase() === correctWord) {
-        checkResult.textContent = "Correct!";
+        checkResult.innerHTML = "&#10004; Correct!"; // Tick mark
         checkResult.style.color = "green";
         playAudio('correct.mp3');
     } else {
-        checkResult.textContent = `Incorrect! The correct spelling is "${correctWord}"`;
+        checkResult.innerHTML = "&#10060; Incorrect! The correct spelling is \"" + correctWord + "\""; // Cross mark
         checkResult.style.color = "red";
         playAudio('incorrect.mp3');
     }
