@@ -45,7 +45,8 @@ function numberToWords(num) {
 }
 
 function checkWord() {
-    const number = document.getElementById('numberInput').value;
+    console.log("checkWord function called"); // Debug log
+    const number = document.getElementById('numberDisplay').textContent;
     const wordInput = document.getElementById('wordInput').value.trim();
     const correctWord = numberToWords(number).toUpperCase();
     const checkResult = document.getElementById('checkResult');
@@ -55,17 +56,18 @@ function checkWord() {
         checkResult.style.color = "green";
         playAudio('correct.mp3');
     } else {
-        checkResult.innerHTML = "&#10060; Incorrect! The correct spelling is \"" + correctWord + "\""; // Cross mark
+        //checkResult.innerHTML = "&#10060; Incorrect! The correct spelling is <br>\"" + correctWord + "\""; // Cross mark
+        checkResult.innerHTML = "&#10060; Incorrect! <a href='#' onclick='speak(" + number + ")'>Try again</a>";
         checkResult.style.color = "red";
         playAudio('incorrect.mp3');
     }
 }
 
 function toggleWordInput() {
-    const numberInput = document.getElementById('numberInput').value;
+    const numberDisplay = document.getElementById('numberDisplay').textContent;
     const wordInput = document.getElementById('wordInput');
-    console.log("Number input value:", numberInput); // Debug log
-    wordInput.disabled = numberInput === "";
+    console.log("Number display value:", numberDisplay); // Debug log
+    wordInput.disabled = numberDisplay === "";
     console.log("Word input disabled:", wordInput.disabled); // Debug log
 }
 
@@ -79,8 +81,16 @@ function playAudio(file) {
     audio.play();
 }
 
-// Attach event listener to number input
-document.getElementById('numberInput').addEventListener('input', toggleWordInput);
+function generateRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 30);
+    document.getElementById('numberDisplay').textContent = randomNumber;
+    document.getElementById('wordInput').value = ""; // Reset wordInput field
+    document.getElementById('checkResult').innerHTML = ""; // Reset checkResult field
+    document.getElementById('numberDisplay').setAttribute('title', numberToWords(randomNumber).toUpperCase()); // Set the title attribute to the number in words
+    toggleWordInput();
+    speak(randomNumber.toString()); // Speak the generated number
+}
 
-// Call toggleWordInput on page load
-document.addEventListener('DOMContentLoaded', toggleWordInput);
+document.addEventListener('DOMContentLoaded', (event) => {
+    generateRandomNumber();
+});
