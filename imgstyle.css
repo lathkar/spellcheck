@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    margin: 20px;
+}
+
+.image-container {
+    margin: 20px 0;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+#wordInput {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #wordInput {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #result {
+        font-size: 18px;
+    }
+}
