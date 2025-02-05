@@ -92,5 +92,6 @@ function generateRandomNumber() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('wordInput').setAttribute('autocomplete', 'off');
     generateRandomNumber();
 });
