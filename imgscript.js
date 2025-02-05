@@ -56,5 +56,6 @@ function retryImage(index) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('wordInput').setAttribute('autocomplete', 'off');
     displayRandomImage(); // Display a random image when the page loads
 });
